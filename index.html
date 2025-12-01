@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC ENERGY SYSTEM</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auto-mode">
+
+<div class="lang-container">
+    <select id="langSelect" class="lang-select">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="zh">ZH</option>
+        <option value="hi">HI</option>
+        <option value="fr">FR</option>
+        <option value="ar">AR</option>
+        <option value="bn">BN</option>
+        <option value="pt">PT</option>
+        <option value="ru">RU</option>
+        <option value="ja">JA</option>
+    </select>
+</div>
+
+<div class="cyber-container">
+    <div class="nav-bar">
+        <a href="manual.html" class="mode-btn">
+            <span>⚙ MODO MANUAL</span>
+        </a>
+    </div>
+
+    <h1 id="mainTitle">BTC Energy <small>[ AUTO SYSTEM ]</small></h1>
+
+    <div class="grid-layout">
+        <div class="input-group">
+            <label id="lbl_price">Precio ($)</label>
+            <input type="number" id="currentPrice" readonly placeholder="...">
+        </div>
+        <div class="input-group">
+            <label id="lbl_hash">Hashrate (EH/s)</label>
+            <input type="number" id="hashrate" readonly value="600">
+        </div>
+        <div class="input-group">
+            <label id="lbl_eff">Eficiencia (J/TH)</label>
+            <input type="number" id="efficiency" value="26">
+        </div>
+        <div class="input-group">
+            <label id="lbl_cost">Costo Elec. ($/kWh)</label>
+            <input type="number" id="kwhCost" value="0.05" step="0.01">
+        </div>
+        <div class="input-group">
+            <label id="lbl_supply">Emisión Anual</label>
+            <input type="number" id="supply" value="164250" readonly> 
+        </div>
+        <div class="input-group">
+            <label id="lbl_fiat">Factor Fiat (f)</label>
+            <input type="number" id="fiatFactor" value="1.0" step="0.1">
+        </div>
+    </div>
+
+    <div class="thermometer-section">
+        <div class="thermometer-bar">
+            <div class="thermometer-pointer" id="pointer" style="left: 50%;"></div>
+        </div>
+        <div class="thermometer-labels">
+            <span id="th_buy">Compra</span>
+            <span id="th_fair">Justo</span>
+            <span id="th_sell">Venta</span>
+        </div>
+    </div>
+
+    <div class="result-panel">
+        <label id="res_label">Valor Justo Estimado</label>
+        <div class="price-display" id="fairValue">$0</div>
+        <div class="action-text" id="actionText">...</div>
+    </div>
+
+    <button class="refresh-btn" id="refreshBtn" disabled style="cursor: default; opacity: 0.9;">
+        :: ... ::
+    </button>
+    
+    <div class="donation-section">
+        <div class="donation-title" id="don_title">☕ Apoya el Proyecto</div>
+        <div class="donation-grid">
+            <div class="crypto-wallet">
+                <span class="coin-name">Bitcoin (Taproot)</span>
+                <code class="wallet-address">bc1qn3aajkhczu82g662qq8j0e5j7qycgyac994j35</code>
+            </div>
+            <div class="crypto-wallet">
+                <span class="coin-name">ETH / Polygon (EVM)</span>
+                <code class="wallet-address">0x9BEe08e410E6d108D1DeC0C41E66E7b105AA3783</code>
+            </div>
+            <div class="crypto-wallet">
+                <span class="coin-name">Solana</span>
+                <code class="wallet-address">9MGd2vmx5myXKvuzUbXPwRauxLiRQ5ReJyJTVCHpXP1</code>
+            </div>
+        </div>
+        <div class="legal-footer">
+            <p><span id="legal_data">Datos de</span> <a href="https://www.coingecko.com/" target="_blank">CoinGecko</a>.</p>
+            <p id="legal_warn">Herramienta educativa. No consejo financiero.</p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

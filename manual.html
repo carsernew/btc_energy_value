@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC ENERGY // SIMULATOR</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="manual-mode">
+
+<div class="lang-container">
+    <select id="langSelect" class="lang-select">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="zh">ZH</option>
+        <option value="hi">HI</option>
+        <option value="fr">FR</option>
+        <option value="ar">AR</option>
+        <option value="bn">BN</option>
+        <option value="pt">PT</option>
+        <option value="ru">RU</option>
+        <option value="ja">JA</option>
+    </select>
+</div>
+
+<div class="cyber-container" style="border-color: var(--cyber-blue); box-shadow: 0 0 80px rgba(6, 182, 212, 0.1);">
+    
+    <div class="nav-bar">
+        <a href="index.html" class="mode-btn" style="color: var(--cyber-blue); border-color: var(--cyber-blue);">
+            <span>📡 VOLVER A AUTO</span>
+        </a>
+    </div>
+
+    <h1 id="mainTitle">
+        Simulador Manual
+        <small>[ SANDBOX MODE ]</small>
+    </h1>
+
+    <div class="grid-layout">
+        <div class="input-group">
+            <label id="lbl_price" style="color: var(--cyber-blue);">Precio ($)</label>
+            <input type="number" id="currentPrice" value="95000">
+        </div>
+        <div class="input-group">
+            <label id="lbl_hash" style="color: var(--cyber-blue);">Hashrate (EH/s)</label>
+            <input type="number" id="hashrate" value="700">
+        </div>
+
+        <div class="input-group">
+            <label id="lbl_eff">Eficiencia (J/TH)</label>
+            <input type="number" id="efficiency" value="26">
+        </div>
+        <div class="input-group">
+            <label id="lbl_cost">Costo Elec. ($/kWh)</label>
+            <input type="number" id="kwhCost" value="0.05" step="0.01">
+        </div>
+        
+        <div class="input-group">
+            <label id="lbl_supply">Emisión Anual</label>
+            <select id="supply" onchange="calcular()">
+                <option value="164250" selected>Actual (2024-2028)</option>
+                <option value="82125">Siguiente (2028-2032)</option>
+                <option value="41062">Futuro (2032-2036)</option>
+                <option value="20531">Futuro (2036-2040)</option>
+                <option value="10265">Futuro (2040-2044)</option>
+                <option value="5132">Futuro (2044-2048)</option>
+                <option value="328500">Pasado (2020-2024)</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label id="lbl_fiat">Factor Fiat (f)</label>
+            <input type="number" id="fiatFactor" value="1.0" step="0.1">
+        </div>
+    </div>
+
+    <div class="thermometer-section">
+        <div class="thermometer-bar">
+            <div class="thermometer-pointer" id="pointer" style="left: 50%; border-color: var(--cyber-blue); background: #000;"></div>
+        </div>
+        <div class="thermometer-labels">
+            <span id="th_buy">Compra</span>
+            <span id="th_fair">Justo</span>
+            <span id="th_sell">Venta</span>
+        </div>
+    </div>
+
+    <div class="result-panel">
+        <label id="res_label" style="color: var(--cyber-blue);">Valor Energético Justo</label>
+        <div class="price-display" id="fairValue">$0</div>
+        <div class="action-text" id="actionText">...</div>
+    </div>
+
+    <button class="refresh-btn" id="refreshBtn" style="background: linear-gradient(135deg, var(--cyber-blue) 0%, #0891b2 100%);">
+        :: RECALCULAR SIMULACIÓN ::
+    </button>
+    
+    <div class="donation-section">
+        <div class="donation-title" id="don_title">☕ Apoya el Proyecto</div>
+        
+        <div class="donation-grid">
+            <div class="crypto-wallet">
+                <span class="coin-name">Bitcoin (Taproot)</span>
+                <code class="wallet-address">bc1qn3aajkhczu82g662qq8j0e5j7qycgyac994j35</code>
+            </div>
+            <div class="crypto-wallet">
+                <span class="coin-name">ETH / Polygon (EVM)</span>
+                <code class="wallet-address">0x9BEe08e410E6d108D1DeC0C41E66E7b105AA3783</code>
+            </div>
+            <div class="crypto-wallet">
+                <span class="coin-name">Solana</span>
+                <code class="wallet-address">9MGd2vmx5myXKvuzUbXPwRauxLiRQ5ReJyJTVCHpXP1</code>
+            </div>
+        </div>
+
+        <div class="legal-footer">
+            <p><span id="legal_data">Datos de</span> CoinGecko (Simulado).</p>
+            <p id="legal_warn">Herramienta educativa. No consejo financiero.</p>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
